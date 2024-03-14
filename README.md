@@ -20,5 +20,5 @@ npm install
 Para iniciar a API execute o seguinte comando:
 
 ```bash
-node index.js
+npx nodemon
 ```
