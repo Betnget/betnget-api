@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { conectarBancoDeDados } from './db.js';
 import mongoose from "mongoose";
+import { buscarUsuarios } from "./service/usuario.service.js";
 const PORT = 3000
 
 /**
@@ -23,16 +24,31 @@ async function run() {
     })
 
     app.get("/usuarios", async function(req, res) {
-        // Acessar o UsuarioModel
-        const UsuarioModel = mongoose.model("Usuario"); // mongoose retorna o modelo já registrado
-        const usuariosCadastrados = await UsuarioModel.find({}); // mongoose faz uma busca de todos os documentos na coleção 'usuarios'
-        res.json(usuariosCadastrados);
+        res.json(await buscarUsuarios());
     });
 
     app.get("/usuarios/:id", async function(req, res){
         const UsuarioModel = mongoose.model("Usuario");
         const usuarioEncontrado = await UsuarioModel.findById(req.params.id);
         res.json(usuarioEncontrado);
+    });
+
+    app.post("/usuarios", async function(req, res) {
+        const UsuarioModel = mongoose.model("Usuario");
+        const resultado = await UsuarioModel.create(req.body);
+        res.json(resultado);
+    })
+
+    app.put("/usuarios/:id", async function(req, res) {
+        const UsuarioModel = mongoose.model("Usuario");
+        await UsuarioModel.findByIdAndUpdate(req.params.id, req.body);
+        res.send("Usuário atualizado com sucesso!");
+    });
+
+    app.delete("/usuarios/:id", async function(req, res){
+        const UsuarioModel = mongoose.model("Usuario");
+        await UsuarioModel.findByIdAndDelete(req.params.id);
+        res.send("Usuário removido com sucesso!");
     });
 
     app.listen(PORT, function() { // Incia a API na porta 3000
