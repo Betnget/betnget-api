@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { getUsuarioModel } from "./model/usuario.js";
+import { getUsuarioModel } from "./model/usuario.model.js";
 
 /**
  * Função responsável por realizar a conexão com o banco de dados MongoDB
