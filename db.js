@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 import { getUsuarioModel } from "./model/usuario.model.js";
 
 /**
- * Função responsável por realizar a conexão com o banco de dados MongoDB
+ * Função responsável por realizar a conexão com o banco de dados MongoDB 
+ * e registrar os modelos do Mongoose
  */
 export async function conectarBancoDeDados() {
     console.log("Vai conectar com o banco de dados...");

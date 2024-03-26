@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import { conectarBancoDeDados } from './db.js';
-import usuarioController from "./controller/usuario.controller.js";
 const PORT = 3000
 
 /**
@@ -16,10 +15,11 @@ async function run() {
     app.use(cors()); // habilita o CORS para consumo da API
     app.use(express.json()); // habilita que a API leia requisições com body contendo JSON
 
-    // Resgistrando os controllers
-    app.use("/usuarios", usuarioController); // registro no express o usuárioController
-
     await conectarBancoDeDados(); // Estabelece a conexão com o banco de dado MongoDB (MongoDB Atlas)
+
+    // Resgistrando os controllers
+    const { default: usuarioController } = await import("./controller/usuario.controller.js");
+    app.use("/usuarios", usuarioController); // registro no express o usuárioController
 
     app.get("/", function(req, res) { // Endpoint GET raiz
         res.send("API Betnget");
