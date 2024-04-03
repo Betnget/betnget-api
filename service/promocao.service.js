@@ -9,3 +9,10 @@ export function buscarPromocoes() {
 export function cadastrarPromocoes(promocao) {
   return promocaoModel.create(promocao);
 }
+
+export function atualizarPromocoes(id, promocao) {
+  return promocaoModel.findByIdAndUpdate(id, promocao, { new: true });
+}
+export function removerPromocao(id) {
+  return promocaoModel.findByIdAndDelete(id);
+}
