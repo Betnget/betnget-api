@@ -6,6 +6,10 @@ export function buscarPromocoes() {
   return promocaoModel.find({});
 }
 
+export function buscarPromocoesPorId(id) {
+  return promocaoModel.findById(id);
+}
+
 export function cadastrarPromocoes(promocao) {
   return promocaoModel.create(promocao);
 }
