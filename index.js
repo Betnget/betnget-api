@@ -28,6 +28,12 @@ async function run() {
   );
   app.use("/promocoes", promocaoController); // registro do express do promocaoController
 
+  //registro do express do cupomController
+  const { default: cupomController } = await import(
+    "./controller/cupom.controller.js"
+  );
+  app.use("/cupons", cupomController);
+
   app.get("/", function (req, res) {
     // Endpoint GET raiz
     res.send("API Betnget");

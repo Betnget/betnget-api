@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { getUsuarioModel } from "./model/usuario.model.js";
 import { getPromocaoModel } from "./model/promocao.model.js";
+import { getCupomModel } from "./model/cupom.model.js";
 
 /**
  * Função responsável por realizar a conexão com o banco de dados MongoDB
@@ -22,4 +23,8 @@ export async function conectarBancoDeDados() {
   console.log("model promocao...");
   getPromocaoModel();
   console.log("model promocao registrado");
+
+  console.log("model cupom...");
+  getCupomModel();
+  console.log("model cupom registrado");
 }
