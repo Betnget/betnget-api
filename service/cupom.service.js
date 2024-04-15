@@ -12,3 +12,6 @@ export function buscarCuponsPorId(id) {
 export function cadastrarCupons(cupom) {
   return cupomModel.create(cupom);
 }
+export function atualizarCupons(id, cupom) {
+  return cupomModel.findByIdAndUpdate(id, cupom, { new: true });
+}

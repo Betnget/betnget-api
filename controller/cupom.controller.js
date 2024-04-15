@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  atualizarCupons,
   buscarCupons,
   buscarCuponsPorId,
   cadastrarCupons,
@@ -16,5 +17,8 @@ cupomController.get("/:id", async function (req, res) {
 });
 cupomController.post("/", async function (req, res) {
   res.json(await cadastrarCupons(req.body));
+});
+cupomController.put("/:id", async function (req, res) {
+  res.json(await atualizarCupons(req.params.id, req.body));
 });
 export default cupomController;
