@@ -4,6 +4,7 @@ import {
   buscarCupons,
   buscarCuponsPorId,
   cadastrarCupons,
+  deletarCupons,
 } from "../service/cupom.service.js";
 
 const cupomController = express.Router();
@@ -20,5 +21,8 @@ cupomController.post("/", async function (req, res) {
 });
 cupomController.put("/:id", async function (req, res) {
   res.json(await atualizarCupons(req.params.id, req.body));
+});
+cupomController.delete("/:id", async function (req, res) {
+  res.json(await deletarCupons(req.params.id));
 });
 export default cupomController;

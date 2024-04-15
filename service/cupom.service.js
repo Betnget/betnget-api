@@ -15,3 +15,6 @@ export function cadastrarCupons(cupom) {
 export function atualizarCupons(id, cupom) {
   return cupomModel.findByIdAndUpdate(id, cupom, { new: true });
 }
+export function deletarCupons(id) {
+  return cupomModel.findByIdAndDelete(id);
+}
