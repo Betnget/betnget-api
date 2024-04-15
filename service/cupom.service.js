@@ -9,3 +9,6 @@ export function buscarCupons() {
 export function buscarCuponsPorId(id) {
   return cupomModel.findById(id);
 }
+export function cadastrarCupons(cupom) {
+  return cupomModel.create(cupom);
+}
